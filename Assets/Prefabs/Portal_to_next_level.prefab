@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1797001334058670620}
   - component: {fileID: 3978414037413532263}
-  - component: {fileID: 1461006086884399461}
   - component: {fileID: 1228968363797442907}
+  - component: {fileID: 3728762093858593208}
   m_Layer: 0
   m_Name: Portal_to_next_level
   m_TagString: Untagged
@@ -86,8 +86,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1461006086884399461
-CircleCollider2D:
+--- !u!114 &1228968363797442907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386176910972392488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bb9860c24147b4f906232f58d6dac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade_obj: {fileID: 4938604673315000999, guid: dbbd6d9c8cd544f409d82b0290d66aa4, type: 3}
+--- !u!70 &3728762093858593208
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,18 +131,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
---- !u!114 &1228968363797442907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386176910972392488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1bb9860c24147b4f906232f58d6dac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: -0.1, y: 0.5}
+  m_Size: {x: 1.8, y: 2.1}
+  m_Direction: 0

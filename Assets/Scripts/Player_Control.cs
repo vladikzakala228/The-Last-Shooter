@@ -1,13 +1,18 @@
-using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int health;
+    public float health;
+    public float maxHealth=5;
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    //public Slider hpCounter;
+    public Image hpCounter;
+    public GameObject diedMenu;
+    public AudioSource DeathSound, Get_Hitted;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -19,6 +24,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        health = maxHealth;
+        //hpCounter.maxValue = maxHealth;
+        //hpCounter.value = maxHealth;
+
     }
 
     private void Update()
@@ -61,11 +70,16 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
+            diedMenu.SetActive(true);
+            DeathSound.Play();
             Destroy(gameObject);
         }
     }
     public void TakeDamage(int damage)
     {
         health -= damage;
+        Get_Hitted.Play();
+        //hpCounter.value = health;
+        hpCounter.fillAmount =(health / maxHealth);
     }
 }

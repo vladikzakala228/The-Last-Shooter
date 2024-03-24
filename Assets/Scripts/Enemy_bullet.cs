@@ -12,6 +12,7 @@ public class Enemy_bullet : MonoBehaviour
     public LayerMask whatIsSolid;
     public float animationHit;
     public GameObject particals;
+    public AudioSource Hitted_Sound;
     private Animator animator;
     private bool canHit = true;
 
@@ -34,11 +35,12 @@ public class Enemy_bullet : MonoBehaviour
             if (hitInfo.collider.CompareTag("Enemy") && canHit)
             {
                 hitInfo.collider.GetComponent<Enemy>().HealEnemy(heal);
-                Instantiate(particals,transform.position, Quaternion.identity);
+                Instantiate(particals,transform.position, particals.transform.rotation);
                 canHit = false;
             }
             animator.SetBool("IsHitted", true);
-            Destroy(gameObject, animationHit);
+            Hitted_Sound.Play(0);
+            Destroy(gameObject, animationHit + Hitted_Sound.clip.length);
         }
         else
         {

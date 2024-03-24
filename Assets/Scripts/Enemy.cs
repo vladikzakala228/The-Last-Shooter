@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int max_health;
     public int health;
     public GameObject Player;
     public GameObject bullet;
     public Transform showPoint;
     public float offset;
+    public AudioSource Death_Sound, Get_Damaged, Shoot_Sound;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        health = max_health;
     }
 
     private void Update()
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
                 animator.SetBool("IsAttacking", true);
                 Invoke("DisableAttack", 0.4f);
                 Instantiate(bullet, showPoint.position, showPoint.transform.rotation);
+                Shoot_Sound.Play(0);
                 timeBtwShots = startTimeBtwShots;
             }
             else
@@ -46,19 +48,23 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             animator.SetBool("IsDead", true);
+            Death_Sound.Play(0);
             Destroy(gameObject, deathanim);
         }
     }
     public void TakeDamage(int damage)
     {
         animator.SetBool("GetHit", true);
+        Get_Damaged.Play(0);
         health -= damage;
         Invoke("DisableGetHit", 0.4f);
     }
 
     public void HealEnemy(int heal)
     {
-        health += heal;
+        if (health < max_health) { 
+            health += heal;
+        }
     }
 
     private void DisableGetHit()

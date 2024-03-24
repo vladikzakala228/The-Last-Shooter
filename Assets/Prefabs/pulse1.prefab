@@ -107,6 +107,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   animationHit: 0.3
+  particals: {fileID: 3842713301299876441, guid: 430781c31d9a8dc4eab3b1f40455e1cb, type: 3}
+  Hitted_Sound: {fileID: 4594582882332112634, guid: 25e09c870537006499a42c9f425c238f, type: 3}
 --- !u!95 &-4488361842352277711
 Animator:
   serializedVersion: 5

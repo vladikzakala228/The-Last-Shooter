@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     public float offset;
     public GameObject bullet;
     public Transform showPoint;
+    public AudioSource Shoot_Sound, Reloud_Sound;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
@@ -22,6 +23,8 @@ public class Gun : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Instantiate(bullet, showPoint.position, transform.rotation);
+                Shoot_Sound.Play(0);
+                Invoke("Play_Reloud_Sound", 0.9f);
                 timeBtwShots = startTimeBtwShots;
             }
         }
@@ -29,5 +32,10 @@ public class Gun : MonoBehaviour
         {
             timeBtwShots -= Time.deltaTime;
         }
+    }
+
+    private void Play_Reloud_Sound()
+    {
+        Reloud_Sound.Play(0);
     }
 }
